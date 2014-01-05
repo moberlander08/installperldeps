@@ -9,7 +9,7 @@ tlength=${#a[@]}
 echo $tlength
 
 #loop through the length of the array and do what you need to do.
-#in this case I am echoing the arrays contents to see if it machs what I need it to do.
+#in this case I am echoing the arrays contents to see if it matches what I need it to do.
 for (( i=0; i<${tlength}; i++ )); do echo ${input[i]}; done
 
 
