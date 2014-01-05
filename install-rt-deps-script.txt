@@ -8,7 +8,7 @@ tlength=${#a[@]}
 #you can echo the array length to see if the total length matchs the source file, not required but helps with troubleshooting.
 echo $tlength
 
-#loop throught the length of the array and do what you need to do.
+#loop through the length of the array and do what you need to do.
 #in this case I am echoing the arrays contents to see if it machs what I need it to do.
 for (( i=0; i<${tlength}; i++ )); do echo ${input[i]}; done
 
