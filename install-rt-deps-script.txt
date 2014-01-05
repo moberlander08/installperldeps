@@ -1,0 +1,142 @@
+#read in dependcies list
+readarray -t input < trimmeddepds.txt
+
+
+#grab length of array
+tlength=${#a[@]}
+
+#you can echo the array length to see if the total length matchs the source file, not required but helps with troubleshooting.
+echo $tlength
+
+#loop throught the length of the array and do what you need to do.
+#in this case I am echoing the arrays contents to see if it machs what I need it to do.
+for (( i=0; i<${tlength}; i++ )); do echo ${input[i]}; done
+
+
+#in this example I am looping through and installing all the perl dependencies needed for RT.
+for (( i=0; i<${tlength}; i++ )); do cpanm ${input[i]}; done
+
+
+#see if it works.
+[root@xxxxxxxxx rtgeneral]# make testdeps
+/usr/bin/perl ./sbin/rt-test-dependencies --verbose --with-mysql --with-fastcgi
+perl:
+        >=5.10.1(5.10.1) ...found
+users:
+        rt group (apache) ...found
+        bin owner (root) ...found
+        libs owner (root) ...found
+        libs group (bin) ...found
+        web owner (apache) ...found
+        web group (apache) ...found
+CLI dependencies:
+        Text::ParseWords ...found
+        Term::ReadKey ...found
+        Getopt::Long >= 2.24 ...found
+        HTTP::Request::Common ...found
+        Term::ReadLine ...found
+        LWP ...found
+CORE dependencies:
+        Storable >= 2.08 ...found
+        Encode >= 2.39 ...found
+        Crypt::Eksblowfish ...found
+        Module::Versions::Report >= 1.05 ...found
+        List::MoreUtils ...found
+        Errno ...found
+        DBI >= 1.37 ...found
+        Devel::StackTrace >= 1.19 ...found
+        HTTP::Message >= 6.0 ...found
+        Text::Password::Pronounceable ...found
+        Devel::GlobalDestruction ...found
+        Time::ParseDate ...found
+        IPC::Run3 ...found
+        Tree::Simple >= 1.04 ...found
+        HTML::Scrubber >= 0.08 ...found
+        HTML::Quoted ...found
+        Sys::Syslog >= 0.16 ...found
+        Mail::Mailer >= 1.57 ...found
+        Data::GUID ...found
+        HTML::Mason >= 1.43 ...found
+        HTML::Entities ...found
+        LWP::Simple ...found
+        Symbol::Global::Name >= 0.04 ...found
+        DateTime::Format::Natural >= 0.67 ...found
+        Plack >= 1.0002 ...found
+        File::Glob ...found
+        Class::Accessor >= 0.34 ...found
+        Text::Wrapper ...found
+        Regexp::Common::net::CIDR ...found
+        Log::Dispatch >= 2.30 ...found
+        HTML::FormatText::WithLinks::AndTables ...found
+        DateTime >= 0.44 ...found
+        CGI::Emulate::PSGI ...found
+        Text::Quoted >= 2.07 ...found
+        Regexp::IPv6 ...found
+        CGI >= 3.38 ...found
+        CSS::Squish >= 0.06 ...found
+        DateTime::Locale >= 0.40 ...found
+        CGI::PSGI >= 0.12 ...found
+        Apache::Session >= 1.53 ...found
+        Date::Extract >= 0.02 ...found
+        Digest::SHA ...found
+        HTML::Mason::PSGIHandler >= 0.52 ...found
+        MIME::Entity >= 5.504 ...found
+        Locale::Maketext::Lexicon >= 0.32 ...found
+        Module::Refresh >= 0.03 ...found
+        Role::Basic >= 0.12 ...found
+        Digest::base ...found
+        File::Temp >= 0.19 ...found
+        Date::Manip ...found
+        Locale::Maketext >= 1.06 ...found
+        HTML::RewriteAttributes >= 0.05 ...found
+        Text::Template >= 1.44 ...found
+        CGI::Cookie >= 1.20 ...found
+        Scalar::Util ...found
+        XML::RSS >= 1.05 ...found
+        File::Spec >= 0.8 ...found
+        Text::WikiFormat >= 0.76 ...found
+        DBIx::SearchBuilder >= 1.65 ...found
+        File::ShareDir ...found
+        Regexp::Common ...found
+        Digest::MD5 >= 2.27 ...found
+        HTML::FormatText::WithLinks >= 0.14 ...found
+        Mail::Header >= 2.12 ...found
+        Locale::Maketext::Fuzzy >= 0.11 ...found
+        Time::HiRes ...found
+        Email::Address::List ...found
+        Net::CIDR ...found
+        JSON ...found
+        UNIVERSAL::require ...found
+        Email::Address >= 1.897 ...found
+        Plack::Handler::Starlet ...found
+DASHBOARDS dependencies:
+        URI::QueryParam ...found
+        URI >= 1.59 ...found
+        MIME::Types ...found
+FASTCGI dependencies:
+        FCGI::ProcManager ...found
+        FCGI >= 0.74 ...found
+GPG dependencies:
+        File::Which ...found
+        PerlIO::eol ...found
+        GnuPG::Interface ...found
+ICAL dependencies:
+        Data::ICal ...found
+MAILGATE dependencies:
+        Pod::Usage ...found
+        LWP::UserAgent >= 6.0 ...found
+        Crypt::SSLeay ...found
+        Getopt::Long ...found
+        Net::SSL ...found
+        LWP::Protocol::https ...found
+        Mozilla::CA ...found
+MYSQL dependencies:
+        DBD::mysql >= 2.1018 ...found
+SMIME dependencies:
+        String::ShellQuote ...found
+        File::Which ...found
+        Crypt::X509 ...found
+USERLOGO dependencies:
+        Convert::Color ...found
+
+All dependencies have been found.
