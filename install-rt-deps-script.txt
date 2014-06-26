@@ -3,7 +3,7 @@ readarray -t input < trimmeddepds.txt
 
 
 #grab length of array
-tlength=${#a[@]}
+tlength=${#input[@]}
 
 #you can echo the array length to see if the total length matchs the source file, not required but helps with troubleshooting.
 echo $tlength
